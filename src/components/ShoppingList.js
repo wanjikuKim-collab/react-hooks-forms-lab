@@ -17,7 +17,9 @@ function ShoppingList({ items, setItems }) {
     setSearch(e.target.value)
   }
 
-  
+  function handleAddItems(newItem){
+    setItems([...items,newItem])
+  }  
 
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All") return true;
@@ -27,7 +29,7 @@ function ShoppingList({ items, setItems }) {
 
   return (
     <div className="ShoppingList">
-      <ItemForm onItemFormSubmit={setItems} items={items}/>
+      <ItemForm onItemFormSubmit={handleAddItems} items={items}/>
       <Filter 
       onCategoryChange={handleCategoryChange} 
       search={search} 
